@@ -14,3 +14,6 @@ Explore and categorize content based on specific criteria and keywords.
 ## Business Problems and Solutions
 
 ### Q1. Count the number of Movies vs TV Shows
+Select type, count(*)
+from netflix
+Group By type;
