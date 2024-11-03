@@ -19,3 +19,18 @@ Select type, count(*)
 from netflix
 Group By type;
 ```
+### Q2.  Find the most common rating for movies and TV shows
+```sql
+With common_rating AS
+(
+    Select type, rating, count(rating) as count,
+    rank() over (partition by type order by count(rating) desc ) as rnk
+    From netflix
+    Group By type, rating
+    Order by type, count(rating) desc
+)
+
+Select type, rating, count
+from common_rating 
+Where rnk = 1
+```
